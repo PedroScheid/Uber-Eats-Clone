@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import HeaderTabs from "../components/home/HeaderTabs";
 import SearchBar from "../components/home/SearchBar";
@@ -8,11 +8,12 @@ import RestaurantItems, {
 } from "../components/home/RestaurantItems";
 import { Divider } from "react-native-elements/dist/divider/Divider";
 import BottomTabs from "../components/home/BottomTabs";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const YELP_API_KEY =
     "CVgrl1ElkRsOF46TnY6rU0v06CjtlVTM_2ZCPwZEjF7szrh_jQFTwgi2hfDrfl26HHJeb8BLoEpQHXu_velA8dq_ZLO3VTn_xva5o9ptkWtBJkJRnx_VNZR2tN_9YXYx";
 
-export default function Home() {
+export default function Home({ navigation }) {
     const [restaurantData, setRestaurantData] = useState(localRestaurants);
     const [city, setCity] = useState("Hollywood"); //para funcionar o google places é necessário ter a conta de credito
     const [activeTab, setActiveTab] = useState("Delivery");
@@ -43,7 +44,7 @@ export default function Home() {
 
     return (
         <SafeAreaView
-            style={{ backgroundColor: "#eee", flex: 1, marginTop: 15 }}
+            style={{ backgroundColor: "#eee", flex: 1 }}
         >
             <View style={{ backgroundColor: "white", padding: 15 }}>
                 <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -51,7 +52,7 @@ export default function Home() {
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
-                <RestaurantItems restaurantData={restaurantData} />
+                <RestaurantItems restaurantData={restaurantData} navigation={navigation} />
             </ScrollView>
             <Divider width={1} />
             <BottomTabs />
