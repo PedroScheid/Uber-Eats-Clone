@@ -48,7 +48,7 @@ export default function Login() {
                 <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 5 }}>Login</Text>
                 <InputBox onChangeText={(text) => setEmail(text)} placeholder="E-mail" />
                 <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 5 }}>Senha</Text>
-                <InputBox onChangeText={(text) => setPassword(text)} placeholder="Senha"  />
+                <InputBox onChangeText={(text) => setPassword(text)} placeholder="Senha" />
                 <TouchableOpacity
                     style={{
                         width: "auto",
